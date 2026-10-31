@@ -47,7 +47,7 @@ jobs:
       - name: Build APK
         run: ./gradlew :TMessagesProj_App:assembleDebug --no-daemon --max-workers=2
         env:
-          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx6g"
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g"
 
       - name: Upload Telegga
         uses: actions/upload-artifact@v4
