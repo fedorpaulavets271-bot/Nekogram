@@ -49,9 +49,9 @@ jobs:
           (while true; do echo "==== RESOURCES $(date -u) ===="; free -m; df -h .; cat /sys/fs/cgroup/memory.events 2>/dev/null || true; sleep 60; done) &
           MONITOR=$!
           trap "kill $MONITOR 2>/dev/null || true" EXIT
-          ./gradlew :TMessagesProj_App:assembleDebug --no-daemon --max-workers=2 --console=plain
+          ./gradlew :TMessagesProj_App:assembleDebug --no-daemon --max-workers=1 --console=plain
         env:
-          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g"
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2g"
 
       - name: Upload Telegga
         uses: actions/upload-artifact@v4
